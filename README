@@ -1,0 +1,32 @@
+ActiveMerchantTesting
+=====================
+
+This is an early stage plugin replacement for ActiveMerchant's authorize_net_gateway and authorize_net_cim_gateway for use in testing.  It's not complete, just does what I needed it to do (which should be most of the gateway, cim-gateway functionality).
+
+Example
+=======
+
+This, of course, depends on active merchant so, if you haven't already
+
+  script/plugin install git://github.com/Shopify/active_merchant.git
+
+Grab the plugin
+
+  script/plugin install git://github.com/wiseleyb/active_merchant_testing.git
+
+
+In your config/environments/test.rb add something like this:
+
+  ActiveMerchant::Billing::Base.gateway_mode = :test
+  CIMGATEWAY = ActiveMerchant::Billing::AuthorizeNetCimGatewayTest.new
+  GATEWAY = ActiveMerchant::Billing::AuthorizeNetGatewayTest.new
+
+Then, in your code, just use the gateway's as normal...
+
+  response = CIMGATEWAY.gateway.delete_customer_profile(:customer_profile_id => 1234)
+
+  response = GATEWAY.capture(dollar_amount, transaction_key)
+
+
+
+Copyright (c) 2010 Ben Wiseley, released under the MIT license
