@@ -18,8 +18,8 @@ Grab the plugin
 In your config/environments/test.rb add something like this:
 
   ActiveMerchant::Billing::Base.gateway_mode = :test
-  CIMGATEWAY = ActiveMerchant::Billing::AuthorizeNetCimGatewayTest.new
-  GATEWAY = ActiveMerchant::Billing::AuthorizeNetGatewayTest.new
+  CIMGATEWAY = AuthorizeNetCimGatewayTest.new
+  GATEWAY = AuthorizeNetGatewayTest.new
 
 Then, in your code, just use the gateway's as normal...
 
